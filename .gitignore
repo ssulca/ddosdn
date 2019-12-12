@@ -1,0 +1,17 @@
+
+# build maven folders
+target/
+# JetBrains
+.idea/
+*.iml
+
+#VisualParadigm
+*.vpp.bak_*
+.vscode/
+*.classpath
+*.project
+.settings/
+#GUI
+*.pyc
+graph.json
+
