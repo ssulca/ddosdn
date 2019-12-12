@@ -36,11 +36,12 @@ Add the ONOS developer environment to your bash profile using step 2
 
  * maven v3+
  * JDK 8
- * docker
+ * [Docker](https://www.docker.com/)
  * docker-compose
- * open Vswithc v2.9+
- * ContainerNet
- 
+ * [Python2](https://www.python.org/downloads/release/python-272/)
+ * [OpenVSwitch](https://www.openvswitch.org/) v2.9+
+ * [Containernet](https://github.com/containernet/containernet)
+
  For OS based in debian use [this](https://github.com/containernet/containernet)
  and based in arch ContainerNet use
  [this](https://aur.archlinux.org/packages/containernet-git/)
