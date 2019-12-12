@@ -33,7 +33,7 @@ Default values
 IP_CONTROLLER = '192.168.50.2'
 PORT_CONTROLLER = 6653
 ```
-### Comandos 
+### Commands 
  * `pingall` to test connectivity 
  * Use Docker for access to Hosts
  * ContainerNet commands in
