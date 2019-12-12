@@ -7,7 +7,7 @@ SDN Topology similat to a ISP infrastructure.
 
 *Simplified block of the system.*
 <p style="text-align: center;">
-<img src=topo.png width=80%>
+<img src=images/topo.png width=80%>
 </p>
 
 
