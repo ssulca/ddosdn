@@ -1,0 +1,90 @@
+# Copyright 2001-2013 Sourcefire, Inc. All Rights Reserved.
+# In order to determine what rules are VRT Certified Rules or GPL Rules, please refer
+# to the VRT Certified Rules License Agreement (v2.0).
+
+#-------------
+# LOCAL RULES
+#-------------
+
+# Filtro de alertas, los matchs se siguen producioendo pero la cantidad de aletas
+# disminuye;
+#event_filter gen_id 1, sig_id 1000001, type limit, track by_src, count 1, seconds 15
+#event_filter gen_id 2, sig_id 1000008, type limit, track by_src, count 1000, seconds 30
+
+#-------------
+# TCP RULES
+#------------
+
+# Track by_dst
+#alert tcp any any -> $HOME_NET 80 (msg:"TCP: SYN Flood"; flags:S; flow: stateless; \
+#    threshold:type both, track by_dst, count 1000, seconds 30; sid:1000001; rev:1;)
+#alert tcp any any -> $HOME_NET any (msg:"TCP: SYN FIN Flood"; flags:SF; \
+#    threshold:type both, track by_dst, count 1000, seconds 30; sid:1000007; rev:1;)
+#alert tcp any any -> $HOME_NET any (msg:"TCP: PUSH ACK Flood"; flags:PA; \
+#    threshold:type both, track by_dst, count 1000, seconds 30; sid:1000006; rev:1;)
+#alert tcp any any -> $HOME_NET any (msg:"TCP: FIN Flood"; flags:F; \
+#    threshold:type both, track by_dst, count 1000, seconds 30; sid:1000004; rev:1;)
+#alert tcp any any -> $HOME_NET any (msg:"TCP: RESET Flood"; flags:R;\
+#    threshold:type both, track by_dst, count 1000, seconds 30; sid:1000008; rev:1;)  
+
+# Track by_src
+alert tcp any any -> any 80 (msg:"TCP: SYN Flood track by src"; flags:S; flow: stateless; \
+    threshold:type both, track by_src, count 1000, seconds 30; sid:1000041; rev:1;)
+alert tcp any any -> any any (msg:"TCP: SYN FIN Flood track by src"; flags:SF; \
+    threshold:type both, track by_src, count 1000, seconds 30; sid:1000047; rev:1;)
+alert tcp any any -> any any (msg:"TCP: PUSH ACK Flood track by src"; flags:PA; \
+    threshold:type both, track by_src, count 1000, seconds 30; sid:1000046; rev:1;)
+alert tcp any any -> any any (msg:"TCP: FIN Flood track by src"; flags:F; \
+    threshold:type both, track by_src, count 1000, seconds 30; sid:1000044; rev:1;)
+alert tcp any any -> any any (msg:"TCP: RESET Flood track by src"; flags:R;\
+    threshold:type both, track by_src, count 1000, seconds 30; sid:1000048; rev:1;)  
+
+#-------------
+# ICMP RULES
+#------------
+alert icmp any any -> any any (msg:"ICMP: SMURF Attack"; itype: 8;\
+    threshold:type both, track by_src, count 40, seconds 30; sid:1000005; rev:1;) 
+# Type 8 en icmp: Echo Request
+
+#---------------
+# Slowloris Rule
+#---------------
+alert tcp any any -> any $HTTP_PORTS (msg:"HTTP: Slowloris Attack"; content:"X-a:"; \
+    fast_pattern: only;classtype:denial-of-service; threshold:type both, track by_src, count 5, \
+    seconds 10; priority: 1; sid: 1000019; rev: 1;)
+# El Slowloris envia X-a: random/r/n como mensaje periodico. Sin terminar el paquete.
+
+#-------------
+# UDP RULES
+#-------------
+#alert udp any any -> $HOME_NET any (msg:"UDP: UDP Flood"; flow:stateless;\
+#    threshold:type both, track by_dst, count 5000, seconds 30; classtype:attempted-dos;\
+#    sid:1000020; rev:1;)
+alert udp any any -> any any (msg:"UDP: UDP Flood track by src"; flow:stateless;\
+    threshold:type both, track by_src, count 5000, seconds 30; classtype:attempted-dos;\
+    sid:1000040; rev:1;)
+#---------------
+# Targa3 Rules
+#---------------
+#alert ip any any -> $HOME_NET any (msg:"IP: TARGA3 Attack."; fragbits:M*; \
+#    threshold:type both, track by_dst, count 1000, seconds 30; classtype:attempted-dos;\
+#    sid:1000021; rev:1;)
+#fragbits:M* se fija si esta en 1 el flag IP, more fragments.
+#alert icmp any any -> $HOME_NET any (msg:"IP: TARGA3 Attack."; itype:>20;\
+#    threshold:type both, track by_dst, count 1000, seconds 10; sid:1000022; rev:1;) 
+
+# port scan rules
+# alert tcp any any -> any any (msg:"PROTOCOL-TCP: SYN Scan"; flags:S; sid:1000002; rev:1;)
+# alert tcp any any -> $HOME_NET any (msg:"PROTOCOL-TCP SYN attack"; flags:S,12; sid:1000003;)
+
+#alert tcp any any -> $HOME_NET any (msg:"TCP: NULL Scan"; flags:0;\
+#    detection_filter:track by_src, count 1000, seconds 10; sid:1000003; rev:1;)
+
+#alert tcp any any -> $HOME_NET any (msg:"TCP: XMUS attack"; flags:FPU; \
+#    detection_filter:track by_src, count 1000, seconds 10; sid:1000005; rev:1;)
+
+
+
+# alert tcp $HOME_NET any -> any 80 (msg:"PROTOCOL-TCP PUSH "; flags:R; sid:1000008;)
+
+
