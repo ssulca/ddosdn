@@ -1,0 +1,93 @@
+# Copyright 2017-present Open Networking Foundation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+version: '2.2'
+
+services:
+  #----------------------------------------
+  #     ####    CONTROLADOR SDN    ####
+  #----------------------------------------
+  onos:
+    image: onosproject/onos:1.13.2
+    ports:
+      # terminal
+      - "8101:8101"
+      # web interfaz
+      - "8181:8181"
+      # TCP socket
+      - "11991:11991"
+    networks:
+      control_net:
+        ipv4_address: 192.168.50.2 # Snort
+      ovs_net:
+        ipv4_address: 192.168.60.2 # OVS
+
+  #----------------------------------------
+  #     ####    IDS SYS    ####
+  #----------------------------------------
+  snort:
+    build: ./snort/
+    networks:
+      control_net:
+        ipv4_address: 192.168.50.3 # Controller
+
+  #----------------------------------------
+  #     ####    WEB SERVER      ####
+  #----------------------------------------
+  apache:
+    build: ./wsrv/
+    # ports:
+    #   - "8080:80"
+
+  #----------------------------------------
+  #     ####    DDoS BOTS       ####
+  #----------------------------------------
+  bot:
+    build: ./bot/
+
+  #----------------------------------------
+  #     ####    USERS           ####
+  #----------------------------------------
+  siege:
+    build: ./usr/
+
+  #----------------------------------------
+  #     ####    GUI    ####
+  #----------------------------------------
+  # gui:
+  #   build: 
+  #     context: ../GUI
+  #   ports:
+  #     - "5000:5000"
+  #   networks:
+  #     ovs_net:
+  #       ipv4_address: 192.168.60.254 # Snort
+  #   #tty: true
+  #   #command: top
+  #   depends_on:
+  #     - "onos"
+
+
+#----------------------------------------
+#     ####      NETWORKS     ####
+#----------------------------------------
+networks:
+  control_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.50.0/24
+    driver_opts:
+      com.docker.network.bridge.name: br_test
+  
+  ovs_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.60.0/24
+    driver_opts:
+      com.docker.network.bridge.name: br_ovs
