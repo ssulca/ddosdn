@@ -1,0 +1,170 @@
+{
+  "devices":
+  {
+    "of:0000000000000001":
+    {
+      "annotations":
+      {
+        "entries":
+        {
+          "killa":"core"
+        }
+      }
+    },
+
+    "of:0000000000000002":
+    {
+      "annotations":
+      {
+        "entries":
+        {
+          "killa":"core"
+        }
+      }
+    },
+
+    "of:0000000000000003":
+    {
+      "annotations":
+      {
+        "entries":
+        {
+          "killa":"border"
+        }
+      }
+    },
+
+    "of:0000000000000004":
+    {
+      "annotations":
+      {
+        "entries":
+        {
+          "killa":"distribution"
+        }
+      }
+    },
+
+    "of:0000000000000005":
+    {
+      "annotations":
+      {
+        "entries":
+        {
+          "killa": "distribution"
+        }
+      }
+    },
+
+    "of:0000000000000006":
+    {
+      "annotations":
+      {
+        "entries":
+        {
+          "killa":"distribution"
+        }
+      }
+    },
+
+    "of:0000000000000007":
+    {
+      "annotations":
+      {
+        "entries":
+        {
+          "killa":"distribution"
+        }
+      }
+    },
+
+    "of:0000000000000008":
+    {
+      "annotations":
+      {
+        "entries":
+        {
+          "killa":"service"
+        }
+      }
+    },
+
+    "of:0000000000000009":
+    {
+      "annotations":
+      {
+        "entries":
+        {
+          "killa":"edge"
+        }
+      }
+    },
+
+    "of:000000000000000a":
+    {
+      "annotations":
+      {
+        "entries":
+        {
+          "killa":"edge"
+        }
+      }
+    },
+
+    "of:000000000000000b":
+    {
+      "annotations":
+      {
+        "entries":
+        {
+          "killa":"edge"
+        }
+      }
+    },
+
+    "of:000000000000000c":
+    {
+      "annotations":
+      {
+        "entries":
+        {
+          "killa":"service"
+        }
+      }
+    },
+
+    "of:000000000000000d":
+    {
+      "annotations":
+      {
+        "entries":
+        {
+          "killa":"edge"
+        }
+      }
+    },
+
+    "of:000000000000000e":
+    {
+      "annotations":
+      {
+        "entries":
+        {
+          "killa":"edge"
+        }
+      }
+    },
+
+    "of:000000000000000f":
+    {
+      "annotations":
+      {
+        "entries":
+        {
+          "killa":"edge"
+        }
+      }
+    }
+  }
+}
+

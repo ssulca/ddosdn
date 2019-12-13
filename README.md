@@ -42,7 +42,7 @@ Add the ONOS developer environment to your bash profile using step 2
  * [OpenVSwitch](https://www.openvswitch.org/) v2.9+
  * [Containernet](https://github.com/containernet/containernet)
 
- For OS based in debian use [this](https://github.com/containernet/containernet)
+ For OS based on debian use [this](https://github.com/containernet/containernet)
  and based in arch ContainerNet use
  [this](https://aur.archlinux.org/packages/containernet-git/)
  
