@@ -2,20 +2,19 @@
 """
 Topologia 5 de la tesis de Gaston Lopez y Sergio Sulca.
 """
+import logging
+import commands
 from mininet.net import Containernet
 from mininet.node import RemoteController  # ,Controller
 from mininet.cli import CLI
 from mininet.link import TCLink
-# from mininet.log import info, setLogLevel
-import logging
-import commands
 
 # IP de Docker 0.
 IP_CONTROLLER = '192.168.50.2'
 PORT_CONTROLLER = 6653
 
 DI_SNORT = "docker_snort:latest"
-DI_USER = "docker_siege:latest"
+DI_USER = "envr_usr:latest"
 DI_SERVER = "docker_apache:latest"
 DI_BOT = "docker_bot:latest"
 DI_DNS = "docker_bind:latest"
