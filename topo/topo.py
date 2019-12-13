@@ -13,11 +13,10 @@ from mininet.link import TCLink
 IP_CONTROLLER = '192.168.50.2'
 PORT_CONTROLLER = 6653
 
-DI_SNORT = "docker_snort:latest"
+DI_SNORT = "envr_snort:latest"
 DI_USER = "envr_usr:latest"
-DI_SERVER = "docker_apache:latest"
-DI_BOT = "docker_bot:latest"
-DI_DNS = "docker_bind:latest"
+DI_SERVER = "envr_apache:latest"
+DI_BOT = "envr_bot:latest"
 
 MEM_USER = '512m'
 MEM_SERVER = '1024m'

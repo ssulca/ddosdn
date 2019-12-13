@@ -1,33 +1,21 @@
 FROM httpd:latest
 
 LABEL version="1.0" \
-      description="Apache 2.4 docker-container" \
-      maintainer="Sergio Sulca <ser.0090@gmail.com>"
+      description="Apache 2.4 docker-container"
 
 RUN apt-get update && \
     apt-get install -y \
     net-tools \
     iputils-ping \
     libcgi-session-perl \
-    nano \
     iproute2 \
     tcpdump \
-    python \
-    python-dev \
-    python-pip
+    build-essential 
 
-RUN pip install Flask &&\
-  pip install simplejson
+ADD public-html/ /usr/local/apache2/htdocs/
+ADD httpd.conf /usr/local/apache2/conf/
+ADD cgi/ /usr/local/apache2/cgi-bin
 
-RUN apt-get install -y \
-  dnsutils \
-  vim
-
-COPY ./public-html/ /usr/local/apache2/htdocs/
-COPY httpd.conf /usr/local/apache2/conf/
-COPY ./cgi/ /usr/local/apache2/cgi-bin
-
-RUN cd /usr/local/apache2/cgi-bin &&\
-    make
-
+WORKDIR /usr/local/apache2/cgi-bin
+RUN make
 CMD ["httpd-foreground"]
