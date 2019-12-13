@@ -5,10 +5,8 @@ FROM ubuntu:16.04
 
 LABEL version="1.2" \
       description="Snort 2.9.11.1 docker-container" \
-      maintainer="Sergio Sulca <ser.0090@gmail.com>"
+      maintainer="Sergio Sulca"
 
-# add libs for snort ver=2.9.11.1 gcc \ openssl \ libssl-dev \ libnghttp2-dev \
-#     libdnet \ libdaq2 \ libdaq-dev \
 RUN apt-get update && \
     apt-get install -y \
         gcc \
@@ -54,11 +52,6 @@ RUN wget https://www.snort.org/downloads/archive/snort/snort-${SNORT_VERSION}.ta
 
 RUN ldconfig
 
-# docker
-# RUN wget --no-check-certificate \
-#         https://github.com/John-Lin/pigrelay/archive/master.zip \
-#     && unzip master.zip
-
 # snortunsock
 RUN wget --no-check-certificate \
     https://github.com/John-Lin/snortunsock/archive/master.zip \
@@ -86,27 +79,14 @@ ADD mysnortrules /opt
 RUN mkdir -p /var/log/snort && \
     mkdir -p /usr/local/lib/snort_dynamicrules && \
     mkdir -p /etc/snort && \
-    # mkdir -p /etc/snort/rules && \
-    # mkdir -p /etc/snort/preproc_rules && \
-    # mkdir -p /etc/snort/so_rules && \
-    # mkdir -p /etc/snort/etc && \
 
     # mysnortrules rules
     cp -r /opt/rules /etc/snort/rules && \
     # Due to empty folder so mkdir
     mkdir -p /etc/snort/preproc_rules && \
     mkdir -p /etc/snort/so_rules && \
-    # cp -r /opt/preproc_rules /etc/snort/preproc_rules && \
-    # cp -r /opt/so_rules /etc/snort/so_rules && \
     cp -r /opt/etc /etc/snort/etc && \
 
-    # snapshot2972 rules
-    # cp -r /opt/rules /etc/snort/rules && \
-    # cp -r /opt/preproc_rules /etc/snort/preproc_rules && \
-    # cp -r /opt/so_rules /etc/snort/so_rules && \
-    # cp -r /opt/etc /etc/snort/etc && \
-
-    # touch /etc/snort/rules/local.rules && \
     touch /etc/snort/rules/white_list.rules /etc/snort/rules/black_list.rules
 
 RUN chmod 5775 -R /etc/snort && \
@@ -118,14 +98,12 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     /opt/snort-${SNORT_VERSION}.tar.gz /opt/daq-${DAQ_VERSION}.tar.gz
 
 RUN pip install netifaces # get interfaces ip
-# ADD dev /opt
+ADD dev /opt
 
 # ENV NETWORK_INTERFACE eth0
 # Validate an installation
 # snort -T -i eth0 -c /etc/snort/etc/snort.conf
 # CMD ["snort", "-T", "-i", "echo ${NETWORK_INTERFACE}", "-c", "/etc/snort/etc/snort.conf"]
-
-# snort -i eth0 -c /etc/snort/etc/snort.conf -A console
 
 # commando para que evitar snort-container se cierre
 # CMD ["snort", "-i", "eth0", "-c", "/etc/snort/etc/snort.conf", "-A", "console"]

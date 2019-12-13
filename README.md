@@ -29,7 +29,7 @@ SDN applications
  [here](https://github.com/opennetworkinglab/onos)
  
 ### Prerequisites
- * Onos
+ * Onos 1.13
  
 Add the ONOS developer environment to your bash profile using step 2
 [here](https://github.com/opennetworkinglab/onos#build-onos-from-source).
