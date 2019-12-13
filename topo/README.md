@@ -22,6 +22,13 @@ Hosts:
  * IDS (4)
  * Web Server (3)
 
+Onos topolgy config
+
+```
+onos-netcfg <ip-controller> resources/devsAnnotations.json
+```
+or using ONOS API 
+
 ## Use
 1. Run SDN Controller
 2. Run `topology.py`
