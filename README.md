@@ -43,7 +43,7 @@ Add the ONOS developer environment to your bash profile using step 2
  * [Containernet](https://github.com/containernet/containernet)
 
  For OS based on debian use [this](https://github.com/containernet/containernet)
- and based in arch ContainerNet use
+ and based on arch ContainerNet use
  [this](https://aur.archlinux.org/packages/containernet-git/)
  
 ### Installation
