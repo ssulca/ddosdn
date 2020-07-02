@@ -2,7 +2,7 @@
 
 v 5.1.2
 
-SDN Topology similat to a ISP infrastructure.
+SDN Topology similar to a ISP infrastructure.
 
 *Simplified block of the system.*
 <p style="text-align: center;">
