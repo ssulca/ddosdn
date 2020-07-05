@@ -47,7 +47,7 @@ Add the ONOS developer environment to your bash profile using step 2
  [this](https://aur.archlinux.org/packages/containernet-git/)
  
 ### Installation
-coming soon
+ [guide](./docs/install.md)
 
 ## License
 Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
