@@ -1,49 +1,60 @@
 # Snort in Docker
 # Modify original Jhohn-Lin project https://github.com/John-Lin/docker-snort
 
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
-LABEL version="1.2" \
-      description="Snort 2.9.11.1 docker-container" \
-      maintainer="Sergio Sulca"
+LABEL version="2.0" \
+      description="Snort 2.9.16 docker-container" \
+      maintainer="ser0090"
 
 RUN apt-get update && \
     apt-get install -y \
-        gcc \
-        openssl \
-        libssl-dev \
-        libnghttp2-dev \
-        libdnet \
-        libdaq2 \
-        libdaq-dev \
-        python-setuptools \
-        python-pip \
-        python-dev \
-        wget \
-        build-essential \
-        bison \
-        flex \
-        libpcap-dev \
-        libpcre3-dev \
-        libdumbnet-dev \
-        zlib1g-dev \
-        iptables-dev \
-        libnetfilter-queue1 \
-        tcpdump \
-        unzip \
-        vim && pip install -U pip dpkt snortunsock
+    wget \
+    build-essential \
+    gcc \
+    tcpdump \
+    vim
+
+RUN apt-get install -y \
+    libdnet \
+    libdaq2 \
+    libpcap-dev \
+    libpcre3-dev \
+    zlib1g-dev \
+    libluajit-5.1-dev \
+    openssl \
+    libssl-dev \
+    libnghttp2-dev \
+    libdumbnet-dev \
+    bison \
+    flex \
+    libdnet \
+    libnetfilter-queue1 \
+    libdumbnet-dev \
+    autoconf \
+    libtool \
+    iptables-dev \
+    unzip 
+
+# Python
+RUN apt-get install -y \
+    python-setuptools \
+    python-pip \
+    python-dev
+
+RUN pip install -U pip dpkt snortunsock
 
 # Define working directory.
 WORKDIR /opt
 
-ENV DAQ_VERSION 2.0.6
+ENV DAQ_VERSION 2.0.7
 RUN wget https://www.snort.org/downloads/snort/daq-${DAQ_VERSION}.tar.gz \
     && tar xvfz daq-${DAQ_VERSION}.tar.gz \
     && cd daq-${DAQ_VERSION} \
     && ./configure; make; make install
 
 # change ENV SNORT_VERSION 2.9.8.2
-ENV SNORT_VERSION 2.9.11.1
+ENV SNORT_VERSION 2.9.16
 #RUN wget https://www.snort.org/downloads/snort/snort-${SNORT_VERSION}.tar.gz \
 RUN wget https://www.snort.org/downloads/archive/snort/snort-${SNORT_VERSION}.tar.gz \
     && tar xvfz snort-${SNORT_VERSION}.tar.gz \
@@ -61,15 +72,11 @@ RUN wget --no-check-certificate \
 RUN ln -s /usr/local/bin/snort /usr/sbin/snort
 
 # comunicacion unixsock python
-RUN apt-get update && \
-    apt-get install -y \
-    python2.7 \
-    python-pip \
+RUN apt-get install -y \
     iputils-ping \
     net-tools \
     iputils-ping \
-    iproute \
-    nano
+    iproute2 
 
 # ENV SNORT_RULES_SNAPSHOT 2972
 # ADD snortrules-snapshot-${SNORT_RULES_SNAPSHOT} /opt
