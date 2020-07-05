@@ -12,7 +12,7 @@ This is a final project degree for computer enginering at
  * Managment App on external Aplication Layer
 
 <p style="text-align: center;">
-<img src=topo/images/onos_topo.png width=50%>
+<img src=topo/images/onos_topo.png width=60%>
 </p>
 
 We implements these apps in order to detect and mitigate DDoS flow and then
