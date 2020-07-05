@@ -1,9 +1,9 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 """
 Topologia 5 de la tesis de Gaston Lopez y Sergio Sulca.
 """
 import logging
-import commands
+import subprocess
 from mininet.net import Containernet
 from mininet.node import RemoteController  # ,Controller
 from mininet.cli import CLI
@@ -13,17 +13,17 @@ from mininet.link import TCLink
 IP_CONTROLLER = '192.168.50.2'
 PORT_CONTROLLER = 6653
 
-DI_SNORT = "envr_snort:latest"
-DI_USER = "envr_usr:latest"
-DI_SERVER = "envr_apache:latest"
-DI_BOT = "envr_bot:latest"
+DI_SNORT = "snort"
+DI_USER = "usr:latest"
+DI_SERVER = "apache:latest"
+DI_BOT = "bot:latest"
 
 MEM_USER = '512m'
 MEM_SERVER = '1024m'
 MEM_BOT = '512m'
 MEM_IDS = '512m'
 
-NET_CMD = 'sudo docker network connect docker_control_net %s'
+# NET_CMD = 'sudo docker network connect docker_control_net %s'
 
 # Users Command
 USER_CMD = 'siege -c1 -t 40M -i -f urls.txt'
@@ -151,10 +151,10 @@ def topoloy():
     # ############################################
     #     IDS ADD NETS ONOS
     # ############################################
-    commands.getoutput(NET_CMD % "mn.ids1")
-    commands.getoutput(NET_CMD % "mn.ids2")
-    commands.getoutput(NET_CMD % "mn.ids3")
-    commands.getoutput(NET_CMD % "mn.ids4")
+    subprocess.run(['docker', 'network', 'connect', 'envr_control_net', 'mn.ids1'])
+    subprocess.run(['docker', 'network', 'connect', 'envr_control_net', 'mn.ids2'])
+    subprocess.run(['docker', 'network', 'connect', 'envr_control_net', 'mn.ids3'])
+    subprocess.run(['docker', 'network', 'connect', 'envr_control_net', 'mn.ids4'])
 
     # ############################################
     #               Switches
