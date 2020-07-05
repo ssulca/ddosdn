@@ -33,6 +33,9 @@ ddosdn is developed and has primary testing on Ubuntu.
      * `cgroup-bin` for `cgroup-tools` , 
      * `python-scapy` for `python3-scapy`
      
+     run `containernet/util/install.sh`, NOTE: there are some compiling erros
+     whit Openflow but ignore these. and install mininet 
+    
      ```
      apt install mininet
      ```
@@ -75,22 +78,6 @@ ddosdn is developed and has primary testing on Ubuntu.
  docker-compose up onos
  ```
 
-### Config test enviroment 
-
-Start Containernet Topology
-
-```
-cd topo
-pip3 install -e .
-```
-
-Config annotations devices on Onos 
-```
-IP_CONTAINER=192.168.60.2 # IP controller
-onos-netcfg ${IP_CONTAINER} topo/resources/jsonAnnotations.json
-```
-
-
 ### Build apps
 
 #### 1. onos apps
@@ -121,8 +108,27 @@ onos-app ${IP_CONTAINER} activate org.onosproject.faultmanagement # alarms REST
 Builded Apps
 
 ```
-onos-app ${IP_CONTAINER} reinstall! ddos-mitigation/target/*.oar
 onos-app ${IP_CONTAINER} reinstall! ddos-detection/target/*.oar
+onos-app ${IP_CONTAINER} reinstall! ddos-mitigation/target/*.oar
 ```
 
-#### progress ...
+### Config test enviroment 
+
+Start Containernet Topology
+
+```
+cd topo
+pip3 install -e .
+```
+
+Config annotations devices on Onos 
+```
+onos-netcfg ${IP_CONTAINER} resources/jsonAnnotations.json
+```
+
+Run topology
+
+```
+python3 topo.py
+```
+
