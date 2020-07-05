@@ -1,7 +1,7 @@
 # ddosdn installation
 ## Build Instructions
 ### OS Requirements
-ddosdn is developed and has primary testing on Ubuntu.
+ddosdn is developed and has primary testing on Ubuntu 18.04.
 
 ### Install Prerequisites
   * [`docker-ce`](https://docs.docker.com/engine/install/ubuntu/)
@@ -34,15 +34,13 @@ ddosdn is developed and has primary testing on Ubuntu.
      * `python-scapy` for `python3-scapy`
      
      run `containernet/util/install.sh`, NOTE: there are some compiling erros
-     whit Openflow but ignore these. and install mininet 
+     whit Openflow but ignore those. and install mininet 
     
      ```
      apt install mininet
+     
+     make -f Makefile develop
      ```
- 
- ```
- make -f Makefile develop
- ```
 
 #### 2. Enviroment
  
@@ -78,7 +76,7 @@ ddosdn is developed and has primary testing on Ubuntu.
  docker-compose up onos
  ```
 
-### Build apps
+### Building apps
 
 #### 1. onos apps
 in ddosdn folder build apps
@@ -105,7 +103,7 @@ onos-app ${IP_CONTAINER} activate org.onosproject.ofagent
 onos-app ${IP_CONTAINER} activate org.onosproject.faultmanagement # alarms REST
 ```
 
-Builded Apps
+Built Apps
 
 ```
 onos-app ${IP_CONTAINER} reinstall! ddos-detection/target/*.oar
@@ -126,7 +124,7 @@ Config annotations devices on Onos
 onos-netcfg ${IP_CONTAINER} resources/jsonAnnotations.json
 ```
 
-Run topology
+### Run topology
 
 ```
 python3 topo.py
