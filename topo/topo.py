@@ -8,6 +8,7 @@ from mininet.net import Containernet
 from mininet.node import RemoteController  # ,Controller
 from mininet.cli import CLI
 from mininet.link import TCLink
+from mininet.node import OVSSwitch
 
 # IP de Docker 0.
 IP_CONTROLLER = '192.168.50.2'
@@ -24,7 +25,7 @@ MEM_BOT = '512m'
 MEM_IDS = '512m'
 
 # NET_CMD = 'sudo docker network connect docker_control_net %s'
-
+OF_PROTOL = 'OpenFlow14'
 # Users Command
 USER_CMD = 'siege -c1 -t 40M -i -f urls.txt'
 
@@ -49,6 +50,11 @@ def topoloy():
     # setLogLevel('info')
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
+
+    # ############################################
+    #           Config Virtual Switches
+    # ############################################
+    cls = OVSSwitch
 
     # ############################################
     #           Config Controller
@@ -162,25 +168,25 @@ def topoloy():
 
     logger.info('Adding switches')
     # Core
-    s1 = net.addSwitch('s1')
-    s2 = net.addSwitch('s2')
+    s1 = net.addSwitch('s1', cls=cls, protocols=OF_PROTOL)
+    s2 = net.addSwitch('s2', cls=cls, protocols=OF_PROTOL)
     # Border
-    s3 = net.addSwitch('s3')
+    s3 = net.addSwitch('s3', cls=cls, protocols=OF_PROTOL)
     # Distribution
-    s4 = net.addSwitch('s4')
-    s5 = net.addSwitch('s5')
-    s6 = net.addSwitch('s6')
-    s7 = net.addSwitch('s7')
+    s4 = net.addSwitch('s4', cls=cls, protocols=OF_PROTOL)
+    s5 = net.addSwitch('s5', cls=cls, protocols=OF_PROTOL)
+    s6 = net.addSwitch('s6', cls=cls, protocols=OF_PROTOL)
+    s7 = net.addSwitch('s7', cls=cls, protocols=OF_PROTOL)
     # Service
-    s8 = net.addSwitch('s8')
-    s12 = net.addSwitch('s12')
+    s8 = net.addSwitch('s8', cls=cls, protocols=OF_PROTOL)
+    s12 = net.addSwitch('s12', cls=cls, protocols=OF_PROTOL)
     # Access
-    s9 = net.addSwitch('s9')
-    s10 = net.addSwitch('s10')
-    s11 = net.addSwitch('s11')
-    s13 = net.addSwitch('s13')
-    s14 = net.addSwitch('s14')
-    s15 = net.addSwitch('s15')
+    s9 = net.addSwitch('s9', cls=cls, protocols=OF_PROTOL)
+    s10 = net.addSwitch('s10', cls=cls, protocols=OF_PROTOL)
+    s11 = net.addSwitch('s11', cls=cls, protocols=OF_PROTOL)
+    s13 = net.addSwitch('s13', cls=cls, protocols=OF_PROTOL)
+    s14 = net.addSwitch('s14', cls=cls, protocols=OF_PROTOL)
+    s15 = net.addSwitch('s15', cls=cls, protocols=OF_PROTOL)
 
     # ############################################
     #               Links
