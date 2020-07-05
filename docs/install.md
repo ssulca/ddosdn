@@ -20,7 +20,8 @@ ddosdn is developed and has primary testing on Ubuntu.
 
 ### Installation
 
- 1. containernet
+#### 1. containernet
+ 
  ```
  sudo apt-get install ansible git aptitude
  git clone https://github.com/containernet/containernet.git
@@ -28,19 +29,19 @@ ddosdn is developed and has primary testing on Ubuntu.
  sudo ansible-playbook -i "localhost," -c local install.yml
  cd ..
  ```
-  * for Ubutu 20.04
-     replace in `containernet/util/install.sh` 
-     
+ * for Ubutu 20.04 replace in `containernet/util/install.sh` 
      * `cgroup-bin` for `cgroup-tools` , 
      * `python-scapy` for `python3-scapy`
      
      ```
      apt install mininet
      ```
+ 
  ```
  make -f Makefile develop
  ```
- 2. Enviroment
+
+#### 2. Enviroment
  
  ```
  git clone https://github.com/ser0090/ddosdn
@@ -51,5 +52,77 @@ ddosdn is developed and has primary testing on Ubuntu.
  docker-compose build bot
  docker-compose build usr
  ```
+ 
+#### 3. Onos
+ 
+ Add onos 1.13 commands to bashrc. get onos 1.13
+ 
+ ``` 
+ wget https://github.com/opennetworkinglab/onos/archive/1.13.10.tar.gz 
+ tar -xf 1.13.10.tar.gz
+ ```
+ 
+ add to .bashrc
+ 
+ ```
+ export ONOS_ROOT=~/onos-1.13.10
+ source $ONOS_ROOT/tools/dev/bash_profile
+ ```
+ 
+ up onos 1.13
+ 
+ ``` 
+ docker-compose up onos
+ ```
 
-#### in progress ...
+### Config test enviroment 
+
+Start Containernet Topology
+
+```
+cd topo
+pip3 install -e .
+```
+
+Config annotations devices on Onos 
+```
+IP_CONTAINER=192.168.60.2 # IP controller
+onos-netcfg ${IP_CONTAINER} topo/resources/jsonAnnotations.json
+```
+
+
+### Build apps
+
+#### 1. onos apps
+in ddosdn folder build apps
+
+```
+cd apps
+
+mvn clean install -f ddos-detection/ -Dcheckstyle.skip
+mvn clean install -f ddos-mitigation/ -Dcheckstyle.skip
+```
+
+### Install Apps
+then install apps in onos controller (docker container),
+
+Required Apps
+
+```bash
+IP_CONTAINER=192.168.60.2 # IP controller
+
+onos-app ${IP_CONTAINER} activate org.onosproject.openflow-base # App Openflow
+onos-app ${IP_CONTAINER} activate org.onosproject.openflow 
+onos-app ${IP_CONTAINER} activate org.onosproject.ofagent
+
+onos-app ${IP_CONTAINER} activate org.onosproject.faultmanagement # alarms REST
+```
+
+Builded Apps
+
+```
+onos-app ${IP_CONTAINER} reinstall! ddos-mitigation/target/*.oar
+onos-app ${IP_CONTAINER} reinstall! ddos-detection/target/*.oar
+```
+
+#### progress ...
