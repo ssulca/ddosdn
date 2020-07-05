@@ -29,15 +29,16 @@ services:
   #----------------------------------------
   snort:
     build: ./snort/
+    image: snort:latest
     networks:
       control_net:
         ipv4_address: 192.168.50.3 # Controller
-
   #----------------------------------------
   #     ####    WEB SERVER      ####
   #----------------------------------------
   apache:
     build: ./wsrv/
+    image: apache:latest
     # ports:
     #   - "8080:80"
 
@@ -46,12 +47,14 @@ services:
   #----------------------------------------
   bot:
     build: ./bot/
+    image: bot:latest
 
   #----------------------------------------
   #     ####    USERS           ####
   #----------------------------------------
   usr:
     build: ./usr/
+    image: usr:latest
 
   #----------------------------------------
   #     ####    GUI    ####
