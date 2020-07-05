@@ -11,6 +11,10 @@ This is a final project degree for computer enginering at
  * Mitigation App on SDN Control layer
  * Managment App on external Aplication Layer
 
+<p style="text-align: center;">
+<img src=topo/images/onos_topo.png width=50%>
+</p>
+
 We implements these apps in order to detect and mitigate DDoS flow and then
 using a Virtual enviroment tath contains a vitual topology like ISP, to test SDN
 apps. We use [ONOS](https://onosproject.org/) SDN controller. 
@@ -35,19 +39,33 @@ Add the ONOS developer environment to your bash profile using step 2
 [here](https://github.com/opennetworkinglab/onos#build-onos-from-source).
 
  * maven v3+
- * JDK 8
+ * java 8
  * [Docker](https://www.docker.com/)
  * docker-compose
- * [Python2](https://www.python.org/downloads/release/python-272/)
  * [OpenVSwitch](https://www.openvswitch.org/) v2.9+
  * [Containernet](https://github.com/containernet/containernet)
 
- For OS based on debian use [this](https://github.com/containernet/containernet)
- and based on arch ContainerNet use
+ For OS based on Debian use [this](https://github.com/containernet/containernet)
+ and based on Arch ContainerNet use
  [this](https://aur.archlinux.org/packages/containernet-git/)
  
 ### Installation
  [guide](./docs/install.md)
+
+## Cite this work
+If you use ddosdn for your research and/or other publications
+
+Bibtex:
+
+```bibtex
+@techreport{ddosdn,
+  author       = {G. Lopez and S. Sulca}, 
+  title        = {Detección y mitigación de ataques DDoS dentro de una arquitectura SDN},
+  institution  = {Facultad de Ciencias Exactas Fisica y Naturales - UNC},
+  year         = 2019,
+  month        = 11
+}
+```
 
 ## License
 Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
@@ -61,6 +79,7 @@ Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 * **ONOS Developers Group** - [onos-dev](https://groups.google.com/a/onosproject.org/forum/#!forum/onos-dev)
 * **Tomattis Natasha** - [natitomattis](https://github.com/natitomattis)
+* **FULGOR FUNDATION** [fulgor](http://www.fundacionfulgor.org.ar/sitio/index.php)
 
 ### Demo
 Demo [video](https://youtu.be/oPERE8d_F40)
