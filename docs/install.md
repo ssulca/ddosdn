@@ -30,8 +30,10 @@ Verilator is developed and has primary testing on Ubuntu.
  ```
   * for Ubutu 20.04
      replace in `containernet/util/install.sh` 
-     `cgroup-bin` for `cgroup-tools` , 
-     `python-scapy` for `python3-scapy`
+     
+     * `cgroup-bin` for `cgroup-tools` , 
+     * `python-scapy` for `python3-scapy`
+     
      ```
      apt install mininet
      ```
@@ -49,3 +51,5 @@ Verilator is developed and has primary testing on Ubuntu.
  docker-compose build bot
  docker-compose build usr
  ```
+
+#### in progress ...
