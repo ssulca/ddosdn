@@ -1,7 +1,7 @@
 # ddosdn installation
 ## Build Instructions
 ### OS Requirements
-Verilator is developed and has primary testing on Ubuntu.
+ddosdn is developed and has primary testing on Ubuntu.
 
 ### Install Prerequisites
   * [`docker-ce`](https://docs.docker.com/engine/install/ubuntu/)
