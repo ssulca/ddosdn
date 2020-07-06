@@ -17,7 +17,9 @@ This is a final project degree for computer enginering at
 
 We implements these apps in order to detect and mitigate DDoS flow and then
 using a Virtual enviroment tath contains a vitual topology like ISP, to test SDN
-apps. We use [ONOS](https://onosproject.org/) SDN controller. 
+apps. We use [ONOS](https://onosproject.org/) SDN controller. It is based on A
+DoS/DDoS Attack Detection System Using Chi-Square Statistic Approach Fang-Yie
+Leu and I-Long Lin [pdf](http://www.iiisci.org/journal/CV$/sci/pdfs/GI137NK.pdf)
 
 ## Built With
 SDN applications
