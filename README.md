@@ -54,6 +54,9 @@ Add the ONOS developer environment to your bash profile using step 2
 ### Installation
  [guide](./docs/install.md)
 
+### Using
+ [use](./docs/use.md)
+
 ## Cite this work
 If you use ddosdn for your research and/or other publications
 
