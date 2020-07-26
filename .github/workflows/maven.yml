@@ -21,6 +21,6 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with detection Maven
-      run: mvn clean install --file ddos-detection/pom.xml
+      run: mvn clean install --file apps/ddos-detection/pom.xml
     - name: Build with mitigation Maven
-      run: mvn clean install --file ddos-mitigation/pom.xml
+      run: mvn clean install --file apps/ddos-mitigation/pom.xml
