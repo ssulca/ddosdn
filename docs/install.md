@@ -7,12 +7,12 @@ ddosdn is developed and has primary testing on Ubuntu 18.04.
   * [`docker-ce`](https://docs.docker.com/engine/install/ubuntu/)
   * `docker-compose`
   * [`openvswitch`](http://docs.openvswitch.org/en/latest/intro/install/distributions/#debian)
-  ```
+  ```bash
   apt install openvswitch-common
   apt install openvswitch-switch
   ```
   * `Java 8`
-  ```
+  ```bash
   apt install openjdk-8-jdk
   ```
   * `maven`  
@@ -22,7 +22,7 @@ ddosdn is developed and has primary testing on Ubuntu 18.04.
 
 #### 1. containernet
  
- ```
+ ```bash
  sudo apt-get install ansible git aptitude
  git clone https://github.com/containernet/containernet.git
  cd containernet/ansible
@@ -36,15 +36,14 @@ ddosdn is developed and has primary testing on Ubuntu 18.04.
      run `containernet/util/install.sh`, NOTE: there are some compiling erros
      whit Openflow but ignore those. and install mininet 
     
-     ```
+     ```bash
      apt install mininet
-     
      make -f Makefile develop
      ```
 
 #### 2. Enviroment
  
- ```
+ ```bash
  git clone https://github.com/ser0090/ddosdn
  cd ddosdn/envr
  
@@ -58,21 +57,21 @@ ddosdn is developed and has primary testing on Ubuntu 18.04.
  
  Add onos 1.13 commands to bashrc. get onos 1.13
  
- ``` 
+ ``` bash
  wget https://github.com/opennetworkinglab/onos/archive/1.13.10.tar.gz 
  tar -xf 1.13.10.tar.gz
  ```
  
  add to .bashrc
  
- ```
+ ```bash
  export ONOS_ROOT=~/onos-1.13.10
  source $ONOS_ROOT/tools/dev/bash_profile
  ```
  
  up onos 1.13
  
- ``` 
+ ```bash
  docker-compose up onos
  ```
 
@@ -81,7 +80,7 @@ ddosdn is developed and has primary testing on Ubuntu 18.04.
 #### 1. onos apps
 in ddosdn folder build apps
 
-```
+```bash
 cd apps
 
 mvn clean install -f ddos-detection/ -Dcheckstyle.skip
@@ -105,7 +104,7 @@ onos-app ${IP_CONTAINER} activate org.onosproject.faultmanagement # alarms REST
 
 Built Apps
 
-```
+```bash
 onos-app ${IP_CONTAINER} reinstall! ddos-detection/target/*.oar
 onos-app ${IP_CONTAINER} reinstall! ddos-mitigation/target/*.oar
 ```
@@ -114,19 +113,19 @@ onos-app ${IP_CONTAINER} reinstall! ddos-mitigation/target/*.oar
 
 Start Containernet Topology
 
-```
+```bash
 cd topo
 pip3 install -e .
 ```
 
 Config annotations devices on Onos 
-```
+```bash
 onos-netcfg ${IP_CONTAINER} resources/jsonAnnotations.json
 ```
 
 ### Run topology
 
-```
+```bash
 python3 topo.py
 ```
 

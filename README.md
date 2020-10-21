@@ -66,7 +66,7 @@ Bibtex:
 @techreport{ddosdn,
   author       = {G. Lopez and S. Sulca}, 
   title        = {Detección y mitigación de ataques DDoS dentro de una arquitectura SDN},
-  institution  = {Facultad de Ciencias Exactas Fisica y Naturales - UNC},
+  institution  = {Facultad de Ciencias Exactas Fisicas y Naturales - UNC},
   year         = 2019,
   month        = 11
 }
