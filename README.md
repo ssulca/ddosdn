@@ -78,7 +78,7 @@ Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 ## Authors
 
 * **López Gastón** - *Initial work* - [GastonLopez](https://github.com//GastonLopez)
-* **Sergio Sulca** - *Initial work* - [ser0090](https://github.com/ser0090)
+* **Sergio Sulca** - *Initial work* - [ssulca](https://github.com/ssulca)
 
 ## Acknowledgments
 
