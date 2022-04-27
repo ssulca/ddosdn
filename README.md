@@ -34,15 +34,15 @@ To test SDN apps, we use [ONOS](https://onosproject.org/) SDN controller.
 
 ## Built With
 SDN applications
-    * [Onos](https://github.com/opennetworkinglab/onos) 1.13
-    * maven v3+
-    * java 8
+ * [Onos](https://github.com/opennetworkinglab/onos) 1.13
+ * maven v3+
+ * java 8
 
 Test enviroment
-    * [Docker](https://www.docker.com/)
-    * Docker-compose
-    * [OpenVSwitch](https://www.openvswitch.org/) v2.9+
-    * [Containernet](https://github.com/containernet/containernet)
+ * [Docker](https://www.docker.com/)
+ * Docker-compose
+ * [OpenVSwitch](https://www.openvswitch.org/) v2.9+
+ * [Containernet](https://github.com/containernet/containernet)
 
 ## Getting started
 See the installation [guide](./docs/install.md).
