@@ -4,34 +4,34 @@
 ddosdn is developed and has primary testing on Ubuntu 18.04.
 
 ### Install Prerequisites
-    * `docker`
-    * `docker-compose`
-    * Java 8
+  * `docker`
+  * `docker-compose`
+  * Java 8
     ```bash
     sudo apt install openjdk-8-jdk
     ```
-    * `maven`
-    * [`openvswitch`](http://docs.openvswitch.org/en/latest/intro/install/distributions/#debian)
+  * `maven`
+  * [`openvswitch`](http://docs.openvswitch.org/en/latest/intro/install/distributions/#debian)
     ```bash
     sudo apt install openvswitch-common
     sudo apt install openvswitch-switch
     ```
-    * [`containernet`](https://github.com/containernet/containernet)
+  * [`containernet`](https://github.com/containernet/containernet)
 
 ### Installation
 
 #### 1. Containernet
 
- ```bash
- sudo apt-get install ansible git aptitude
- git clone https://github.com/containernet/containernet.git
- cd containernet/ansible
- sudo ansible-playbook -i "localhost," -c local install.yml
- cd ..
- ```
+```bash
+sudo apt-get install ansible git aptitude
+git clone https://github.com/containernet/containernet.git
+cd containernet/ansible
+sudo ansible-playbook -i "localhost," -c local install.yml
+cd ..
+```
 For Ubutu 20.04 replace in `containernet/util/install.sh`
-    * `cgroup-bin` for `cgroup-tools` ,
-    * `python-scapy` for `python3-scapy`
+* `cgroup-bin` for `cgroup-tools` ,
+* `python-scapy` for `python3-scapy`
 
 run `containernet/util/install.sh`.
 > NOTE: there are some compiling erros whit Openflow but ignore those. and
