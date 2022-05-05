@@ -108,14 +108,34 @@ onos-app ${IP_CONTAINER} reinstall! ddos-mitigation/target/*.oar
 
 ### Config test enviroment
 
-Start Containernet Topology
+Start Containernet SDN Topology similar to an ISP infrastructure.
+
+*Simplified block of the system.*
+<p style="text-align: center;">
+<img src=images/topo.png width=80%>
+</p>
+
+
+Devices:
+ * EDGE (8)
+ * DISTRIBUTION (4)
+ * CORE (2)
+ * BORDER (1)
+
+Hosts:
+ * Common user (13)
+ * Bot (7)
+ * IDS (4)
+ * Web Server (3)
+
+
+Install dependencies
 
 ```bash
 cd topo
 pip3 install -e .
 ```
-
-Config annotations devices on Onos
+Configure annotations devices on Onos
 ```bash
 onos-netcfg ${IP_CONTAINER} resources/jsonAnnotations.json
 ```
@@ -125,4 +145,15 @@ onos-netcfg ${IP_CONTAINER} resources/jsonAnnotations.json
 ```bash
 python3 topo.py
 ```
+
+Default values
+
+```python
+IP_CONTROLLER = '192.168.50.2'
+PORT_CONTROLLER = 6653
+```
+Commands
+ * `pingall` to test connectivity
+ * Use `docker` for access to Hosts
+ * ContainerNet commands in [Doc](https://github.com/mininet/mininet/wiki/Documentation)
 
